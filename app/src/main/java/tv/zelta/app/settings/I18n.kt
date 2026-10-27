@@ -5,7 +5,7 @@ import org.json.JSONObject
 import java.util.Locale
 
 /**
- * Data-driven translations copied from the desktop app (assets/i18n/*.json).
+ * Data-driven translations copied from the desktop app (assets/i18n).
  * `translate` looks a string up by its English text, so the existing
  * `zt(turkish, english)` call sites keep working and gain 18 languages.
  */
