@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -124,21 +125,21 @@ private fun HomeShell(
 
     BoxWithConstraints(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
         val portrait = maxWidth < maxHeight
-        // phones (not tablets, not TVs) get a strict portrait/landscape split:
-        // menus in portrait, playback forced to landscape
+        // phones (not tablets, not TVs) keep working in portrait: the player sits
+        // above the channel list instead of forcing a landscape rotation
         val handset = configuration.smallestScreenWidthDp < 600
         val compact = maxWidth < 840.dp || handset
-        val menuOnly = handset && portrait
         val playing = wantsPlayer && viewModel.selected != null
-        val playerVisible = playing && !menuOnly
+        val portraitPlayback = handset && portrait && playing
+        val playerVisible = playing
 
-        // Rotate to landscape as soon as playback starts and back to the menu
-        // orientation when the player closes. TVs keep their own orientation.
+        // The user can rotate freely while watching; phones fall back to portrait
+        // for the menus. TVs keep their own orientation.
         androidx.compose.runtime.LaunchedEffect(isTelevision, handset, playing) {
             if (isTelevision) return@LaunchedEffect
             val target = activity ?: return@LaunchedEffect
             val requested = when {
-                playing -> ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+                playing -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 handset -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                 else -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
             }
@@ -192,7 +193,37 @@ private fun HomeShell(
                 )
             }
 
-            if (compact) {
+            if (compact && portraitPlayback) {
+                // portrait phone: 16:9 player on top, channel list underneath
+                Column(Modifier.fillMaxSize()) {
+                    PlayerPane(
+                        viewModel = viewModel,
+                        compact = true,
+                        fullscreen = false,
+                        onToggleFullscreen = { fullscreen = true },
+                        onOpenChannels = { channelMenuOpen = true },
+                        onOpenMenu = { menuOpen = true },
+                        onOpenSources = { sourcesOpen = true },
+                        onOpenQuality = { qualityOpen = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(16f / 9f),
+                    )
+                    ChannelSidebar(
+                        viewModel = viewModel,
+                        onChannelSelected = { channel ->
+                            viewModel.play(channel)
+                            wantsPlayer = true
+                        },
+                        onOpenSources = { sourcesOpen = true },
+                        onOpenSettings = onOpenSettings,
+                        onFullscreen = { fullscreen = true },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f),
+                    )
+                }
+            } else if (compact) {
                 if (playerVisible) {
                     PlayerPane(
                         viewModel = viewModel,

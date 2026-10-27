@@ -222,7 +222,10 @@ fun PlayerPane(
                 }
             }
             .focusable()
-            .clickable { onOpenChannels() },
+            .clickable {
+                // touch: first tap reveals the transport bar, second tap hides it
+                controlsVisible = !controlsVisible
+            },
     ) {
         AndroidView(
             factory = { context ->
@@ -501,7 +504,7 @@ private fun PlayerAction(
     var focused by remember { mutableStateOf(false) }
     Box(
         Modifier
-            .size(38.dp)
+            .size(44.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(if (focused) MaterialTheme.colorScheme.primary.copy(alpha = 0.22f) else Color.Transparent)
             .border(
@@ -513,7 +516,7 @@ private fun PlayerAction(
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {
-        Icon(icon, contentDescription = description, tint = Color.White, modifier = Modifier.size(19.dp))
+        Icon(icon, contentDescription = description, tint = Color.White, modifier = Modifier.size(21.dp))
     }
 }
 
@@ -522,7 +525,7 @@ private fun PlayerTextAction(text: String, description: String, onClick: () -> U
     var focused by remember { mutableStateOf(false) }
     Box(
         Modifier
-            .size(38.dp)
+            .size(44.dp)
             .clip(RoundedCornerShape(6.dp))
             .background(if (focused) MaterialTheme.colorScheme.primary.copy(alpha = 0.22f) else Color.Transparent)
             .border(
