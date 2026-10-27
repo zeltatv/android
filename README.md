@@ -19,8 +19,9 @@ AAB requires a private key and a store account, so it is still the next step.
 ## 1.0.0 update (2026-10-27)
 
 - Setup wizard is English-only and opens with a **Language** step; the chosen language applies to the rest of the app
-- Portrait phone flow: menus only (channel rail, sources, settings, main menu) with no inline player
-- Playback automatically rotates a phone to landscape; Back returns to the portrait menu
+- Portrait phone flow: the channel rail, sources, settings and the main menu work in portrait
+- Portrait playback: the player sits in a 16:9 band above the channel list; rotation is no longer forced, so a phone can be used upright while watching
+- Touch first: tapping the video toggles the transport bar (the channel menu is one tap away) and every transport button is a 44dp target
 - Responsive setup card (brand panel hides on narrow screens) and dialog layouts
 - Publisher links point to the `zeltatv` organisation
 
