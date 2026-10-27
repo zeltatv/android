@@ -49,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import tv.zelta.app.R
+import tv.zelta.app.settings.I18n
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
 import tv.zelta.app.ui.theme.isBrightColor
@@ -81,7 +82,8 @@ fun zt(turkish: String, english: String): String {
     val context = LocalContext.current
     @Suppress("DEPRECATION")
     val language = context.resources.configuration.locale.language
-    return if (language == "tr") turkish else english
+    val translated = remember(context, language) { I18n.translate(context, language, english) }
+    return translated ?: if (language == "tr") turkish else english
 }
 
 /**

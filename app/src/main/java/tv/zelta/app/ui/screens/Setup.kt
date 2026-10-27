@@ -60,6 +60,7 @@ import tv.zelta.app.data.PlaylistSource
 import tv.zelta.app.data.SourceType
 import tv.zelta.app.player.PlayerViewModel
 import tv.zelta.app.settings.AppSettings
+import tv.zelta.app.settings.I18n
 import tv.zelta.app.ui.components.BrandLockup
 import tv.zelta.app.ui.components.BrandMark
 import tv.zelta.app.ui.components.EmptyPanel
@@ -443,9 +444,17 @@ private fun LanguageStep(
             fontSize = 12.sp,
         )
         Spacer(Modifier.height(20.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            ZeltaChip("Türkçe", settings.language == "tr", { onLanguage("tr") })
-            ZeltaChip("English", settings.language == "en", { onLanguage("en") })
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            I18n.LANGUAGES.chunked(3).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    row.forEach { (code, label) ->
+                        ZeltaChip(label, settings.language == code, { onLanguage(code) })
+                    }
+                }
+            }
         }
         Spacer(Modifier.height(24.dp))
         ZeltaButton(

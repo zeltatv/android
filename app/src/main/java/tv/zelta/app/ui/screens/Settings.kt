@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import tv.zelta.app.player.PlayerViewModel
 import tv.zelta.app.settings.AppSettings
+import tv.zelta.app.settings.I18n
 import tv.zelta.app.ui.components.BrandLockup
 import tv.zelta.app.ui.components.SectionLabel
 import tv.zelta.app.ui.components.ZeltaButton
@@ -311,19 +312,22 @@ private fun LanguageTab(settings: AppSettings, activity: Activity?) {
     Card {
         SectionLabel(zt("ARAYÜZ DİLİ", "INTERFACE LANGUAGE"))
         Spacer(Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            ZeltaChip("Türkçe", settings.language == "tr", {
-                if (settings.language != "tr") {
-                    settings.updateLanguage("tr")
-                    activity?.recreate()
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            I18n.LANGUAGES.chunked(3).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    row.forEach { (code, label) ->
+                        ZeltaChip(label, settings.language == code, {
+                            if (settings.language != code) {
+                                settings.updateLanguage(code)
+                                activity?.recreate()
+                            }
+                        })
+                    }
                 }
-            })
-            ZeltaChip("English", settings.language == "en", {
-                if (settings.language != "en") {
-                    settings.updateLanguage("en")
-                    activity?.recreate()
-                }
-            })
+            }
         }
         Spacer(Modifier.height(10.dp))
         Text(
