@@ -18,7 +18,8 @@ AAB requires a private key and a store account, so it is still the next step.
 
 ## 1.0.0 update (2026-10-27)
 
-- Setup wizard is English-only and opens with a **Language** step; the chosen language applies to the rest of the app
+- Setup wizard opens with a **Language** step and switches language as soon as a card is tapped; the chosen language applies to the rest of the app
+- **18 UI languages** (English, Turkish, Spanish, German, French, Italian, Portuguese, Dutch, Polish, Russian, Ukrainian, Azerbaijani, Georgian, Arabic, Hindi, Japanese, Korean, Chinese): the desktop translation catalog ships in `assets/i18n`, with an extra 24-string override file for Android-only copy
 - Portrait phone flow: the channel rail, sources, settings and the main menu work in portrait
 - Portrait playback: the player sits in a 16:9 band above the channel list; rotation is no longer forced, so a phone can be used upright while watching
 - Touch first: tapping the video toggles the transport bar (the channel menu is one tap away) and every transport button is a 44dp target
