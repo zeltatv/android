@@ -19,7 +19,11 @@ AAB requires a private key and a store account, so it is still the next step.
 ## 1.0.0 update (2026-10-27)
 
 - Setup wizard opens with a **Language** step and switches language as soon as a card is tapped; the chosen language applies to the rest of the app
-- **18 UI languages** (English, Turkish, Spanish, German, French, Italian, Portuguese, Dutch, Polish, Russian, Ukrainian, Azerbaijani, Georgian, Arabic, Hindi, Japanese, Korean, Chinese): the desktop translation catalog ships in `assets/i18n`, with an extra 24-string override file for Android-only copy
+- **18 UI languages** (English, Turkish, Spanish, German, French, Italian, Portuguese, Dutch, Polish, Russian, Ukrainian, Azerbaijani, Georgian, Arabic, Hindi, Japanese, Korean, Chinese): the desktop translation catalog ships in `assets/i18n`, with a per-language override file for Android-only copy
+- **Tile library on first run**: with no channel list loaded the home screen shows the same large playlist tiles as the desktop (source name, address, category, edit/delete), the add-source form and the file picker; the wizard's "set up later" now lands here instead of auto-loading the demo list
+- **Playback errors in plain language**: network, format and DRM failures are explained in the chosen language, with the ExoPlayer code kept as a small technical detail under the message
+- **Responsive home and forms**: the tiles flow in 1, 2 or 3 columns and the add-source form stacks on phones, sits in a row on tablets and TVs; text fields keep their 56 dp touch target so placeholders are never clipped, and the tagline only appears next to the wordmark when it fits
+- Cards are D-pad focusable: one press from the top bar reaches a tile, OK opens it
 - Portrait phone flow: the channel rail, sources, settings and the main menu work in portrait
 - Portrait playback: the player sits in a 16:9 band above the channel list; rotation is no longer forced, so a phone can be used upright while watching
 - Touch first: tapping the video toggles the transport bar (the channel menu is one tap away) and every transport button is a 44dp target

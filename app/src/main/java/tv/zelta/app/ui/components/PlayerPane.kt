@@ -387,20 +387,31 @@ fun PlayerPane(
             Column(
                 Modifier
                     .align(Alignment.Center)
-                    .padding(24.dp)
+                    .padding(16.dp)
                     .clip(RoundedCornerShape(10.dp))
                     .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.96f))
                     .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(10.dp))
-                    .padding(22.dp),
+                    .padding(horizontal = 18.dp, vertical = 14.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Text(zt("Oynatma hatası", "Playback error"), color = MaterialTheme.colorScheme.error, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
-                Spacer(Modifier.height(7.dp))
-                Text(error, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp, maxLines = 4, overflow = TextOverflow.Ellipsis)
-                Spacer(Modifier.height(13.dp))
+                Text(zt("Oynatma hatası", "Playback error"), color = MaterialTheme.colorScheme.error, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Spacer(Modifier.height(6.dp))
+                Text(error, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 11.sp, maxLines = 3, overflow = TextOverflow.Ellipsis)
+                Spacer(Modifier.height(10.dp))
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     ZeltaButton(zt("Tekrar dene", "Retry"), viewModel::retry, primary = true, icon = Icons.Filled.Refresh)
                     ZeltaButton(zt("Kanallar", "Channels"), onOpenChannels)
+                }
+                val detail = viewModel.errorDetail
+                if (detail != null) {
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        detail,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.55f),
+                        fontSize = 8.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
                 }
             }
         }

@@ -412,9 +412,9 @@ private fun AboutTab(context: android.content.Context) {
         Spacer(Modifier.height(12.dp))
         Text(
             zt(
-                "Sürüm ${tv.zelta.app.BuildConfig.VERSION_NAME} · Android",
-                "Version ${tv.zelta.app.BuildConfig.VERSION_NAME} · Android",
-            ),
+                "Sürüm {version} · Android",
+                "Version {version} · Android",
+            ).replace("{version}", tv.zelta.app.BuildConfig.VERSION_NAME),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 11.sp,
         )

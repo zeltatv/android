@@ -382,7 +382,7 @@ fun ZeltaTextField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = if (singleLine) modifier.height(36.dp) else modifier,
+        modifier = modifier,
         singleLine = singleLine,
         placeholder = { Text(placeholder, color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f), fontSize = 12.sp) },
         leadingIcon = if (leadingGlyph != null) {

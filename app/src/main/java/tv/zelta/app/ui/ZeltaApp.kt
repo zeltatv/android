@@ -54,6 +54,7 @@ import tv.zelta.app.ui.screens.SettingsScreen
 import tv.zelta.app.ui.screens.SetupScreen
 import tv.zelta.app.ui.screens.SourcesDialog
 import tv.zelta.app.ui.screens.ChannelMenuDialog
+import tv.zelta.app.ui.screens.HomeLibraryScreen
 import tv.zelta.app.ui.theme.Ri
 
 private const val ROUTE_HOME = "home"
@@ -132,6 +133,9 @@ private fun HomeShell(
         val playing = wantsPlayer && viewModel.selected != null
         val portraitPlayback = handset && portrait && playing
         val playerVisible = playing
+        // No playlist yet: the desktop shows the tile library instead of the
+        // sidebar, so Android does the same.
+        val libraryOnly = viewModel.channels.isEmpty() && !playing
 
         // The user can rotate freely while watching; phones fall back to portrait
         // for the menus. TVs keep their own orientation.
@@ -193,7 +197,9 @@ private fun HomeShell(
                 )
             }
 
-            if (compact && portraitPlayback) {
+            if (libraryOnly) {
+                HomeLibraryScreen(viewModel = viewModel, modifier = Modifier.fillMaxSize())
+            } else if (compact && portraitPlayback) {
                 // portrait phone: 16:9 player on top, channel list underneath
                 Column(Modifier.fillMaxSize()) {
                     PlayerPane(

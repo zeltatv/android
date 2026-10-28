@@ -29,6 +29,7 @@ import tv.zelta.app.data.PlaylistStore
 import tv.zelta.app.data.SourceType
 import tv.zelta.app.data.demoSource
 import tv.zelta.app.settings.AppSettings
+import tv.zelta.app.settings.I18n
 import tv.zelta.core.playlist.Channel
 import java.util.UUID
 
@@ -89,6 +90,10 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     var errorMessage by mutableStateOf<String?>(null)
         private set
 
+    /** Technical ExoPlayer code, shown under the friendly message. */
+    var errorDetail by mutableStateOf<String?>(null)
+        private set
+
     var isBuffering by mutableStateOf(false)
         private set
 
@@ -116,12 +121,16 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         player.addListener(object : Player.Listener {
             override fun onPlayerError(error: PlaybackException) {
                 isBuffering = false
-                errorMessage = "${error.errorCodeName}: ${error.message ?: str(R.string.error_unknown_playback)}"
+                errorDetail = "${error.errorCodeName}: ${error.message ?: str(R.string.error_unknown_playback)}"
+                errorMessage = friendlyError(error.errorCode)
             }
 
             override fun onPlaybackStateChanged(playbackState: Int) {
                 isBuffering = playbackState == Player.STATE_BUFFERING
-                if (playbackState == Player.STATE_READY) errorMessage = null
+                if (playbackState == Player.STATE_READY) {
+                    errorMessage = null
+                    errorDetail = null
+                }
             }
 
             override fun onIsPlayingChanged(playing: Boolean) {
@@ -151,8 +160,10 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             categories = store.categories()
             favorites = store.favorites()
             history = store.history()
-            val source = saved.firstOrNull { it.id == store.lastSourceId() } ?: saved.first()
-            loadSource(source, restoreLastChannel = true)
+            // Only reopen a source the viewer picked before: on a fresh install
+            // the tile library stands on its own, exactly like the desktop app.
+            val source = saved.firstOrNull { it.id == store.lastSourceId() }
+            if (source != null) loadSource(source, restoreLastChannel = true)
         }
     }
 
@@ -161,6 +172,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         activeSource = source
         selected = null
         errorMessage = null
+        errorDetail = null
         loadError = null
         player.stop()
         player.clearMediaItems()
@@ -189,6 +201,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     fun play(channel: Channel) {
         selected = channel
         errorMessage = null
+        errorDetail = null
         store.rememberChannel(channel.url)
         history = store.history()
         player.setMediaItem(MediaItem.fromUri(channel.url))
@@ -204,9 +217,15 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         activeSource?.let { loadSource(it) }
     }
 
+    /** Dismisses the last playlist / import error shown on the home screen. */
+    fun clearLoadError() {
+        loadError = null
+    }
+
     fun stopPlayback() {
         selected = null
         errorMessage = null
+        errorDetail = null
         isBuffering = false
         player.stop()
         player.clearMediaItems()
@@ -317,6 +336,26 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         if (activeSource?.id == source.id) activeSource = updated
     }
 
+    /** Rename a source and, for link sources, change its address too. */
+    fun updateSource(source: PlaylistSource, name: String, value: String) {
+        val trimmed = name.trim().ifBlank { source.name }
+        val address = value.trim()
+        if (source.type == SourceType.URL) {
+            if (!repository.isValidUrl(address)) {
+                loadError = str(R.string.error_invalid_url)
+                return
+            }
+        }
+        val updated = source.copy(
+            name = trimmed,
+            value = if (source.type == SourceType.URL) address else source.value,
+            fileName = if (source.type == SourceType.URL) null else source.fileName,
+        )
+        store.addOrReplace(updated)
+        sources = store.sources()
+        if (activeSource?.id == source.id) activeSource = updated
+    }
+
     fun categoryNames(source: PlaylistSource): String =
         categories.filter { it.id in source.categoryIds }.joinToString(", ") { it.name }
 
@@ -339,4 +378,49 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     private fun str(id: Int, vararg args: Any): String = getApplication<Application>().getString(id, *args)
+
+    /** Turns an ExoPlayer code into a sentence a viewer can act on. */
+    private fun friendlyError(code: Int): String = when (code) {
+        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+        PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT,
+        PlaybackException.ERROR_CODE_IO_FILE_NOT_FOUND,
+        PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS,
+        PlaybackException.ERROR_CODE_IO_NO_PERMISSION,
+        PlaybackException.ERROR_CODE_IO_UNSPECIFIED,
+        -> localize(
+            "Bu kanala ulaşılamıyor. Adresi veya bağlantınızı kontrol edin.",
+            "This channel is not reachable. Check the address or your connection.",
+        )
+
+        PlaybackException.ERROR_CODE_PARSING_CONTAINER_MALFORMED,
+        PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED,
+        PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED,
+        PlaybackException.ERROR_CODE_PARSING_MANIFEST_UNSUPPORTED,
+        PlaybackException.ERROR_CODE_DECODING_FORMAT_UNSUPPORTED,
+        PlaybackException.ERROR_CODE_DECODER_INIT_FAILED,
+        -> localize(
+            "Bu yayın biçimi desteklenmiyor.",
+            "This stream format is not supported.",
+        )
+
+        PlaybackException.ERROR_CODE_DRM_LICENSE_ACQUISITION_FAILED,
+        PlaybackException.ERROR_CODE_DRM_UNSPECIFIED,
+        PlaybackException.ERROR_CODE_DRM_SCHEME_UNSUPPORTED,
+        PlaybackException.ERROR_CODE_DRM_PROVISIONING_FAILED,
+        -> localize(
+            "Yayın, kullanılamayan bir DRM anahtarı gerektiriyor.",
+            "The stream needs a DRM key that is not available.",
+        )
+
+        else -> localize(
+            "Oynatma başarısız oldu. Başka bir kanal deneyin.",
+            "Playback failed. Try another channel.",
+        )
+    }
+
+    private fun localize(turkish: String, english: String): String {
+        val language = settings.language
+        return I18n.translate(getApplication(), language, english)
+            ?: if (language == "tr") turkish else english
+    }
 }

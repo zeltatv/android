@@ -101,9 +101,9 @@ fun AboutScreen(onBack: () -> Unit) {
                         Spacer(Modifier.height(12.dp))
                         Text(
                             zt(
-                                "Sürüm ${BuildConfig.VERSION_NAME} · Android",
-                                "Version ${BuildConfig.VERSION_NAME} · Android",
-                            ),
+                                "Sürüm {version} · Android",
+                                "Version {version} · Android",
+                            ).replace("{version}", BuildConfig.VERSION_NAME),
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 10.sp,
                         )

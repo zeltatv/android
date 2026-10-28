@@ -62,6 +62,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import tv.zelta.app.data.PlaylistSource
 import tv.zelta.app.data.SourceType
+import tv.zelta.app.data.DemoSourceId
 import tv.zelta.app.player.PlayerViewModel
 import tv.zelta.app.ui.components.EmptyPanel
 import tv.zelta.app.ui.components.PanelSurface
@@ -76,6 +77,11 @@ import tv.zelta.app.ui.components.autoFocus
 import tv.zelta.app.ui.components.zt
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
+
+/** The demo playlist has no user-given name, so it follows the UI language. */
+@Composable
+private fun sourceLabel(source: PlaylistSource): String =
+    if (source.id == DemoSourceId) zt("Demo liste", "Demo list") else source.name
 
 /** Playlist library: URL/file import, categories and source switching. */
 @Composable
@@ -278,9 +284,9 @@ fun SourcesScreen(
         ConfirmDialog(
             title = zt("Kaynağı sil", "Delete source"),
             body = zt(
-                "\"${source.name}\" ve buna bağlı kanal listesi kaldırılacak. Favoriler ve geçmiş korunur.",
-                "\"${source.name}\" and its channel list will be removed. Favourites and history are kept.",
-            ),
+                "\"{name}\" ve buna bağlı kanal listesi kaldırılacak. Favoriler ve geçmiş korunur.",
+                "\"{name}\" and its channel list will be removed. Favourites and history are kept.",
+            ).replace("{name}", sourceLabel(source)),
             confirmLabel = zt("Sil", "Delete"),
             danger = true,
             onDismiss = { deleteTarget = null },
@@ -348,7 +354,7 @@ private fun SourceCard(
         Column(Modifier.weight(1f)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    source.name,
+                    sourceLabel(source),
                     color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -532,7 +538,7 @@ private fun CategoryAssignDialog(
                 Column(Modifier.padding(20.dp)) {
                     Text(zt("Kategoriler", "Categories"), color = MaterialTheme.colorScheme.onSurface, fontSize = 17.sp, fontWeight = FontWeight.Bold)
                     Spacer(Modifier.height(3.dp))
-                    Text(source.name, color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 10.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(sourceLabel(source), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 10.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                     Spacer(Modifier.height(12.dp))
                     if (viewModel.categories.isEmpty()) {
                         Text(zt("Önce bir kategori oluşturun.", "Create a category first."), color = MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 10.sp)
@@ -928,9 +934,9 @@ fun SourcesDialog(
         ConfirmDialog(
             title = zt("Kaynağı sil", "Delete source"),
             body = zt(
-                "\"${source.name}\" ve buna bağlı kanal listesi kaldırılacak. Favoriler ve geçmiş korunur.",
-                "\"${source.name}\" and its channel list will be removed. Favourites and history are kept.",
-            ),
+                "\"{name}\" ve buna bağlı kanal listesi kaldırılacak. Favoriler ve geçmiş korunur.",
+                "\"{name}\" and its channel list will be removed. Favourites and history are kept.",
+            ).replace("{name}", sourceLabel(source)),
             confirmLabel = zt("Sil", "Delete"),
             danger = true,
             onDismiss = { deleteTarget = null },
@@ -1058,7 +1064,7 @@ private fun SourceManagerRow(
             Spacer(Modifier.width(8.dp))
             Column(Modifier.weight(1f)) {
                 Text(
-                    source.name,
+                    sourceLabel(source),
                     color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
