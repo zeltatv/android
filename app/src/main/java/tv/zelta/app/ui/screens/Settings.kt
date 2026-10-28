@@ -32,12 +32,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -54,10 +56,13 @@ import tv.zelta.app.ui.components.ZeltaButton
 import tv.zelta.app.ui.components.ZeltaChip
 import tv.zelta.app.ui.components.ZeltaRiButton
 import tv.zelta.app.ui.components.autoFocus
+import tv.zelta.app.ui.components.channelCountText
 import tv.zelta.app.ui.components.zt
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
 import tv.zelta.app.ui.theme.ZELTA_PALETTES
+import tv.zelta.app.ui.theme.ZeltaAmber
+import tv.zelta.app.ui.theme.ZeltaTurquoise
 import tv.zelta.app.ui.theme.isBrightColor
 import tv.zelta.app.ui.theme.zeltaColors
 
@@ -73,7 +78,12 @@ fun SettingsScreen(
 ) {
     val context = LocalContext.current
     val activity = context as? Activity
-    var tab by remember { mutableStateOf("playback") }
+    val configuration = LocalConfiguration.current
+    // The Enhanced settings rail is a wide-screen (tablet/TV) pattern; on a phone
+    // it would squeeze the content panel, so phones keep the tab strip in both
+    // orientations.
+    val enhancedRail = settings.skin == "enhanced" && configuration.smallestScreenWidthDp >= 600
+    var tab by rememberSaveable { mutableStateOf("playback") }
     var confirmReset by remember { mutableStateOf(false) }
     val firstFocus = remember { FocusRequester() }
     LaunchedEffect(Unit) { runCatching { firstFocus.requestFocus() } }
@@ -150,7 +160,7 @@ fun SettingsScreen(
             }
         }
 
-        if (settings.skin == "enhanced") {
+        if (enhancedRail) {
             // Enhanced skin: vertical remote rail, matching the desktop settings page.
             Row(Modifier.fillMaxWidth().weight(1f)) {
                 Column(
@@ -344,8 +354,18 @@ private fun ThemeTab(settings: AppSettings) {
         SectionLabel(zt("GÖRÜNÜM", "APPEARANCE"))
         Spacer(Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            ZeltaChip("ZeltaTV", settings.skin == "zeltatv", { settings.updateSkin("zeltatv") })
-            ZeltaChip("Enhanced", settings.skin == "enhanced", { settings.updateSkin("enhanced") })
+            ZeltaChip(
+                label = zt("Klasik", "Classic"),
+                selected = settings.skin == "zeltatv",
+                onClick = { settings.updateSkin("zeltatv") },
+                accent = ZeltaAmber,
+            )
+            ZeltaChip(
+                label = "Enhanced",
+                selected = settings.skin == "enhanced",
+                onClick = { settings.updateSkin("enhanced") },
+                accent = ZeltaTurquoise,
+            )
         }
         Spacer(Modifier.height(16.dp))
         SectionLabel(zt("TEMA PALETİ", "THEME PALETTE"))
@@ -388,7 +408,7 @@ private fun DataTab(
     Card {
         SettingRow(
             title = zt("Kanal kitaplığı", "Channel library"),
-            body = "${viewModel.channels.size} ${zt("kanal", "channels")} · ${viewModel.activeSource?.name ?: "-"}",
+            body = "${channelCountText(viewModel.channels.size)} · ${viewModel.activeSource?.name ?: "-"}",
         ) {
             ZeltaButton(zt("Kaynaklar", "Sources"), onOpenSources, glyph = Ri.PlayList)
         }

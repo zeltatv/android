@@ -111,5 +111,7 @@
 	"Create a category first.": "أنشئ فئة أولًا.",
 	"New category": "فئة جديدة",
 	"Create": "إنشاء",
-	"Add a link or a file to get started.": "أضف رابطًا أو ملفًا للبدء."
+	"Add a link or a file to get started.": "أضف رابطًا أو ملفًا للبدء.",
+	"Classic": "كلاسيكي",
+	"{count} channels": "{count} قناة"
 }

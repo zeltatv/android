@@ -111,5 +111,7 @@
 	"Create a category first.": "Сначала создайте категорию.",
 	"New category": "Новая категория",
 	"Create": "Создать",
-	"Add a link or a file to get started.": "Добавьте ссылку или файл, чтобы начать."
+	"Add a link or a file to get started.": "Добавьте ссылку или файл, чтобы начать.",
+	"Classic": "Классический",
+	"{count} channels": "{count} каналов"
 }

@@ -111,5 +111,7 @@
 	"Create a category first.": "पहले एक श्रेणी बनाएँ।",
 	"New category": "नई श्रेणी",
 	"Create": "बनाएँ",
-	"Add a link or a file to get started.": "शुरू करने के लिए लिंक या फ़ाइल जोड़ें।"
+	"Add a link or a file to get started.": "शुरू करने के लिए लिंक या फ़ाइल जोड़ें।",
+	"Classic": "क्लासिक",
+	"{count} channels": "{count} चैनल"
 }

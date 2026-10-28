@@ -111,5 +111,7 @@
 	"Create a category first.": "Maak eerst een categorie.",
 	"New category": "Nieuwe categorie",
 	"Create": "Aanmaken",
-	"Add a link or a file to get started.": "Voeg een link of bestand toe om te beginnen."
+	"Add a link or a file to get started.": "Voeg een link of bestand toe om te beginnen.",
+	"Classic": "Klassiek",
+	"{count} channels": "{count} kanalen"
 }

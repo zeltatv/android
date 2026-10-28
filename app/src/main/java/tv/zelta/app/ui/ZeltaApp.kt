@@ -137,18 +137,14 @@ private fun HomeShell(
         // sidebar, so Android does the same.
         val libraryOnly = viewModel.channels.isEmpty() && !playing
 
-        // The user can rotate freely while watching; phones fall back to portrait
-        // for the menus. TVs keep their own orientation.
-        androidx.compose.runtime.LaunchedEffect(isTelevision, handset, playing) {
+        // Rotation follows the device sensor: turning the phone sideways rotates
+        // the app, even with the system rotation lock on. TVs keep their own
+        // fixed orientation.
+        androidx.compose.runtime.LaunchedEffect(isTelevision) {
             if (isTelevision) return@LaunchedEffect
             val target = activity ?: return@LaunchedEffect
-            val requested = when {
-                playing -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-                handset -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                else -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-            }
-            if (target.requestedOrientation != requested) {
-                target.requestedOrientation = requested
+            if (target.requestedOrientation != ActivityInfo.SCREEN_ORIENTATION_SENSOR) {
+                target.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR
             }
         }
 

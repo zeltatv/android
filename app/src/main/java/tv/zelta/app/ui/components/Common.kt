@@ -100,6 +100,11 @@ fun ztSetup(turkish: String, english: String): String {
     return translated ?: if (language == "tr") turkish else english
 }
 
+/** "6 channels" with the count first, translated per language. */
+@Composable
+fun channelCountText(count: Int): String =
+    zt("{count} kanal", "{count} channels").replace("{count}", count.toString())
+
 @Composable
 fun BrandMark(
     modifier: Modifier = Modifier,
@@ -333,21 +338,25 @@ fun ZeltaChip(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     leading: String? = null,
+    accent: Color? = null,
 ) {
     var focused by remember { mutableStateOf(false) }
     val shape = RoundedCornerShape(50)
+    val chipColor = accent ?: zeltaColors.focus
     Row(
         modifier = modifier
             .height(28.dp)
             .clip(shape)
             .background(
-                if (selected) zeltaColors.focus.copy(alpha = 0.14f)
-                else if (focused) zeltaColors.focus.copy(alpha = 0.08f)
+                if (selected) chipColor.copy(alpha = 0.14f)
+                else if (focused) chipColor.copy(alpha = 0.08f)
+                else if (accent != null) accent.copy(alpha = 0.06f)
                 else Color.Transparent
             )
             .border(
                 if (focused || selected) 1.5.dp else 1.dp,
-                if (focused || selected) zeltaColors.focus else MaterialTheme.colorScheme.outline,
+                if (focused || selected) chipColor
+                else accent?.copy(alpha = 0.55f) ?: MaterialTheme.colorScheme.outline,
                 shape,
             )
             .onFocusChanged { focused = it.isFocused }
@@ -356,12 +365,14 @@ fun ZeltaChip(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         if (leading != null) {
-            Text(leading, color = if (selected) zeltaColors.focus else MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
+            Text(leading, color = if (selected) chipColor else MaterialTheme.colorScheme.onSurfaceVariant, fontSize = 12.sp)
             Spacer(Modifier.width(5.dp))
         }
         Text(
             label,
-            color = if (selected || focused) zeltaColors.focus else MaterialTheme.colorScheme.onSurfaceVariant,
+            color = if (selected || focused) chipColor
+            else if (accent != null) MaterialTheme.colorScheme.onSurface
+            else MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 11.sp,
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
             maxLines = 1,

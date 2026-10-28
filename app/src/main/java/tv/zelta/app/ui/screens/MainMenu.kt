@@ -42,6 +42,7 @@ import tv.zelta.app.ui.components.PanelSurface
 import tv.zelta.app.ui.components.autoFocus
 import tv.zelta.app.ui.components.clockText
 import tv.zelta.app.ui.components.dateText
+import tv.zelta.app.ui.components.channelCountText
 import tv.zelta.app.ui.components.zt
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
@@ -130,7 +131,7 @@ fun MainMenuDialog(
                         val narrow = maxWidth < 540.dp
                         val tiles = listOf(
                             MenuTile("sources", Ri.PlayList, zt("Kaynaklar", "Sources"), zt("Oynatma listelerini ekle ve yönet", "Add and manage playlists"), onSources),
-                            MenuTile("channels", Ri.ListCheck, zt("Kanal listesi", "Channel list"), "$channelCount ${zt("kanal", "channels")}", onChannels),
+                            MenuTile("channels", Ri.ListCheck, zt("Kanal listesi", "Channel list"), channelCountText(channelCount), onChannels),
                             MenuTile("settings", Ri.Settings, zt("Ayarlar", "Settings"), zt("Oynatma, tema, dil", "Playback, theme, language"), onSettings),
                             MenuTile("shortcuts", Ri.Keyboard, zt("Kısayollar", "Shortcuts"), zt("Kumanda ve klavye tuşları", "Remote and keyboard keys"), onShortcuts),
                             MenuTile("skin", Ri.Palette, zt("Görünüm", "Appearance"), zt("ZeltaTV / Enhanced", "ZeltaTV / Enhanced"), onAppearance),

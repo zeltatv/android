@@ -111,5 +111,7 @@
 	"Create a category first.": "先にカテゴリを作成してください。",
 	"New category": "新しいカテゴリ",
 	"Create": "作成",
-	"Add a link or a file to get started.": "開始するにはリンクまたはファイルを追加してください。"
+	"Add a link or a file to get started.": "開始するにはリンクまたはファイルを追加してください。",
+	"Classic": "クラシック",
+	"{count} channels": "{count} チャンネル"
 }

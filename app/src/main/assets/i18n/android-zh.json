@@ -111,5 +111,7 @@
 	"Create a category first.": "请先创建一个分类。",
 	"New category": "新分类",
 	"Create": "创建",
-	"Add a link or a file to get started.": "添加链接或文件以开始使用。"
+	"Add a link or a file to get started.": "添加链接或文件以开始使用。",
+	"Classic": "经典",
+	"{count} channels": "{count} 个频道"
 }

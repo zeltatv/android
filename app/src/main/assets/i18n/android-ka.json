@@ -111,5 +111,7 @@
 	"Create a category first.": "ჯერ შექმენით კატეგორია.",
 	"New category": "ახალი კატეგორია",
 	"Create": "შექმნა",
-	"Add a link or a file to get started.": "დასაწყებად დაამატეთ ბმული ან ფაილი."
+	"Add a link or a file to get started.": "დასაწყებად დაამატეთ ბმული ან ფაილი.",
+	"Classic": "კლასიკური",
+	"{count} channels": "{count} არხი"
 }

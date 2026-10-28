@@ -72,6 +72,7 @@ import tv.zelta.app.ui.components.ZeltaChip
 import tv.zelta.app.ui.components.ZeltaTextButton
 import tv.zelta.app.ui.components.ZeltaTextField
 import tv.zelta.app.ui.components.autoFocus
+import tv.zelta.app.ui.components.channelCountText
 import tv.zelta.app.ui.components.ztSetup
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
@@ -756,7 +757,7 @@ private fun ReadyStep(
             )
         } else {
             Text(
-                "${viewModel.channels.size} ${ztSetup("kanal", "channels")} · ${viewModel.activeSource?.name ?: ""}",
+                "${channelCountText(viewModel.channels.size)} · ${viewModel.activeSource?.name ?: ""}",
                 color = MaterialTheme.colorScheme.primary,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.SemiBold,

@@ -111,5 +111,7 @@
 	"Create a category first.": "Crie primeiro uma categoria.",
 	"New category": "Nova categoria",
 	"Create": "Criar",
-	"Add a link or a file to get started.": "Adicione uma ligação ou um ficheiro para começar."
+	"Add a link or a file to get started.": "Adicione uma ligação ou um ficheiro para começar.",
+	"Classic": "Clássico",
+	"{count} channels": "{count} canais"
 }
