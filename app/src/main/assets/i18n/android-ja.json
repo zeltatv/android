@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP、ファイル、デモ",
 	"Local library": "ローカルライブラリ",
 	"Favourites and history": "お気に入りと履歴",
-	"← Back": "← 戻る"
+	"← Back": "← 戻る",
+	"Home": "ホーム",
+	"Menu": "メニュー",
+	"Hide sidebar": "サイドバーを隠す",
+	"Show sidebar": "サイドバーを表示",
+	"Keyboard and remote shortcuts": "キーボードとリモコンのショートカット"
 }

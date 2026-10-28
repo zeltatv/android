@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, ფაილი და დემო",
 	"Local library": "ლოკალური ბიბლიოთეკა",
 	"Favourites and history": "რჩეულები და ისტორია",
-	"← Back": "← უკან"
+	"← Back": "← უკან",
+	"Home": "მთავარი",
+	"Menu": "მენიუ",
+	"Hide sidebar": "პანელის დამალვა",
+	"Show sidebar": "პანელის ჩვენება",
+	"Keyboard and remote shortcuts": "კლავიატურისა და პულტის მალსახმობები"
 }

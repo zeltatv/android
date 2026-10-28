@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, bestand en demo",
 	"Local library": "Lokale bibliotheek",
 	"Favourites and history": "Favorieten en geschiedenis",
-	"← Back": "← Terug"
+	"← Back": "← Terug",
+	"Home": "Home",
+	"Menu": "Menu",
+	"Hide sidebar": "Zijbalk verbergen",
+	"Show sidebar": "Zijbalk tonen",
+	"Keyboard and remote shortcuts": "Sneltoetsen voor toetsenbord en afstandsbediening"
 }

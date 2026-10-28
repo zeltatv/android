@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, फ़ाइल और डेमो",
 	"Local library": "स्थानीय लाइब्रेरी",
 	"Favourites and history": "पसंदीदा और इतिहास",
-	"← Back": "← पीछे"
+	"← Back": "← पीछे",
+	"Home": "होम",
+	"Menu": "मेनू",
+	"Hide sidebar": "साइडबार छिपाएँ",
+	"Show sidebar": "साइडबार दिखाएँ",
+	"Keyboard and remote shortcuts": "कीबोर्ड और रिमोट शॉर्टकट"
 }

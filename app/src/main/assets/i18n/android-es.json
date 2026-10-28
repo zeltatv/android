@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, archivo y demo",
 	"Local library": "Biblioteca local",
 	"Favourites and history": "Favoritos e historial",
-	"← Back": "← Atrás"
+	"← Back": "← Atrás",
+	"Home": "Inicio",
+	"Menu": "Menú",
+	"Hide sidebar": "Ocultar panel",
+	"Show sidebar": "Mostrar panel",
+	"Keyboard and remote shortcuts": "Atajos de teclado y mando"
 }

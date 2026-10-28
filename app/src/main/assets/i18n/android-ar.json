@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP وملف وعرض تجريبي",
 	"Local library": "مكتبة محلية",
 	"Favourites and history": "المفضلة والسجل",
-	"← Back": "← رجوع"
+	"← Back": "← رجوع",
+	"Home": "الرئيسية",
+	"Menu": "القائمة",
+	"Hide sidebar": "إخفاء الشريط الجانبي",
+	"Show sidebar": "إظهار الشريط الجانبي",
+	"Keyboard and remote shortcuts": "اختصارات لوحة المفاتيح وجهاز التحكم"
 }

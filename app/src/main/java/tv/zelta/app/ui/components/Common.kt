@@ -461,7 +461,10 @@ fun EmptyPanel(title: String, body: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun clockText(): String {
-    val format = remember { SimpleDateFormat("HH:mm", Locale.getDefault()) }
+    val context = LocalContext.current
+    @Suppress("DEPRECATION")
+    val language = context.resources.configuration.locale.language
+    val format = remember(language) { SimpleDateFormat("HH:mm", Locale(language)) }
     var now by remember { mutableStateOf(Date()) }
     LaunchedEffect(Unit) {
         while (true) {
@@ -474,7 +477,10 @@ fun clockText(): String {
 
 @Composable
 fun dateText(): String {
-    val format = remember { SimpleDateFormat("d MMMM EEEE", Locale.getDefault()) }
+    val context = LocalContext.current
+    @Suppress("DEPRECATION")
+    val language = context.resources.configuration.locale.language
+    val format = remember(language) { SimpleDateFormat("d MMMM EEEE", Locale(language)) }
     return format.format(Date())
 }
 

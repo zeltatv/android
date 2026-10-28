@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, Datei und Demo",
 	"Local library": "Lokale Bibliothek",
 	"Favourites and history": "Favoriten und Verlauf",
-	"← Back": "← Zurück"
+	"← Back": "← Zurück",
+	"Home": "Start",
+	"Menu": "Menü",
+	"Hide sidebar": "Seitenleiste ausblenden",
+	"Show sidebar": "Seitenleiste einblenden",
+	"Keyboard and remote shortcuts": "Tastatur- und Fernbedienungskürzel"
 }

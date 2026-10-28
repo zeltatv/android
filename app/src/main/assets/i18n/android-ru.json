@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, файл и демо",
 	"Local library": "Локальная библиотека",
 	"Favourites and history": "Избранное и история",
-	"← Back": "← Назад"
+	"← Back": "← Назад",
+	"Home": "Главная",
+	"Menu": "Меню",
+	"Hide sidebar": "Скрыть панель",
+	"Show sidebar": "Показать панель",
+	"Keyboard and remote shortcuts": "Сочетания клавиш и пульта"
 }

@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, 파일, 데모",
 	"Local library": "로컬 라이브러리",
 	"Favourites and history": "즐겨찾기 및 기록",
-	"← Back": "← 뒤로"
+	"← Back": "← 뒤로",
+	"Home": "홈",
+	"Menu": "메뉴",
+	"Hide sidebar": "사이드바 숨기기",
+	"Show sidebar": "사이드바 표시",
+	"Keyboard and remote shortcuts": "키보드 및 리모컨 단축키"
 }

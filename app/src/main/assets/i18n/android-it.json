@@ -22,5 +22,10 @@
 	"HTTP, file and demo": "HTTP, file e demo",
 	"Local library": "Libreria locale",
 	"Favourites and history": "Preferiti e cronologia",
-	"← Back": "← Indietro"
+	"← Back": "← Indietro",
+	"Home": "Home",
+	"Menu": "Menu",
+	"Hide sidebar": "Nascondi pannello",
+	"Show sidebar": "Mostra pannello",
+	"Keyboard and remote shortcuts": "Scorciatoie tastiera e telecomando"
 }
