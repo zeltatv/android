@@ -271,7 +271,7 @@ fun SetupScreen(
                         }
                         Spacer(Modifier.weight(1f))
                         Text(
-                            ztSetup("Adım ${step + 1}/4", "Step ${step + 1}/4"),
+                            "${ztSetup("Adım", "Step")} ${step + 1}/4",
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             fontSize = 10.sp,
                         )

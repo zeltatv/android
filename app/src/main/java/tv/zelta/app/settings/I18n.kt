@@ -29,6 +29,10 @@ object I18n {
             if (value.isBlank() || source.isBlank()) continue
             out[normalize(source)] = value
         }
+        // Android-only copy that has no desktop counterpart
+        for ((englishText, translated) in parse(context, "android-$language")) {
+            if (translated.isNotBlank()) out[normalize(englishText)] = translated
+        }
         return out
     }
 
