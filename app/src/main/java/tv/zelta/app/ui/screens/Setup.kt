@@ -425,7 +425,7 @@ private fun LanguageStep(
     val continueFocus = remember { FocusRequester() }
 
     Column {
-        SectionLabel(ztSetup("İLK KURULUM", "FIRST RUN"))
+        SectionLabel(ztSetup("KURULUM", "SETUP"))
         Spacer(Modifier.height(7.dp))
         Text(
             ztSetup("Dil seç", "Choose your language"),
@@ -437,8 +437,8 @@ private fun LanguageStep(
         Spacer(Modifier.height(6.dp))
         Text(
             ztSetup(
-                "Bu kurulum yardımcısı yalnızca İngilizce çalışır. Kurulumdan sonra ZeltaTV'nin kullanacağı dili seçin.",
-                "This setup assistant runs in English only. Pick the language ZeltaTV will use once setup is done.",
+                "Kurulumda kullanmak istediğiniz dili seçin. Daha sonra Ayarlar'dan değiştirebilirsiniz.",
+                "Choose the language you want to use in ZeltaTV. You can change it later in Settings.",
             ),
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             fontSize = 12.sp,
@@ -478,7 +478,7 @@ private fun WelcomeStep(
     val startFocus = remember { FocusRequester() }
 
     Column {
-        SectionLabel(ztSetup("İLK KURULUM", "FIRST RUN"))
+        SectionLabel(ztSetup("KURULUM", "SETUP"))
         Spacer(Modifier.height(7.dp))
         Text(
             ztSetup("ZeltaTV'ye hoş geldiniz", "Welcome to ZeltaTV"),

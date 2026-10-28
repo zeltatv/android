@@ -87,11 +87,18 @@ fun zt(turkish: String, english: String): String {
 }
 
 /**
- * English-only translate used by the first-run setup wizard: the assistant keeps a
- * single language while the chosen UI language applies to the rest of the app.
+ * Translate used by the first-run setup wizard. It follows the language chosen
+ * on the first step, so the assistant switches language as soon as a card is
+ * tapped (the desktop wizard behaves the same way).
  */
-@Suppress("UNUSED_PARAMETER")
-fun ztSetup(turkish: String, english: String): String = english
+@Composable
+fun ztSetup(turkish: String, english: String): String {
+    val context = LocalContext.current
+    @Suppress("DEPRECATION")
+    val language = context.resources.configuration.locale.language
+    val translated = remember(context, language) { I18n.translate(context, language, english) }
+    return translated ?: if (language == "tr") turkish else english
+}
 
 @Composable
 fun BrandMark(
