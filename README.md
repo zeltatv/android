@@ -22,7 +22,7 @@ debug-signed and intended for sideloading.
 | | |
 |---|---|
 | <img src="docs/images/screenshots/02-player.png" alt="Portrait playback: 16:9 player above the channel list" width="300"> | <img src="docs/images/screenshots/08-channels-landscape.png" alt="Landscape channel list" width="100%"> |
-| <img src="docs/images/screenshots/01-sources.png" alt="Sources dialog on the Library tab" width="300"> | <img src="docs/images/screenshots/03-channels.png" alt="Channel list with search, favourites and history" width="300"> |
+| <img src="docs/images/screenshots/01-sources.png" alt="Sources dialog on the Link tab" width="300"> | <img src="docs/images/screenshots/03-channels.png" alt="Channel list with search, favourites and history" width="300"> |
 | <img src="docs/images/screenshots/04-menu.png" alt="Main menu tiles" width="300"> | <img src="docs/images/screenshots/05-settings.png" alt="Theme settings with seven colour palettes" width="300"> |
 
 <p align="center">
