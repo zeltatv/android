@@ -198,7 +198,7 @@ private fun MenuTileView(tile: MenuTile, modifier: Modifier = Modifier) {
     var focused by remember { mutableStateOf(false) }
     Column(
         modifier
-            .height(96.dp)
+            .height(116.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(
                 if (focused) zeltaColors.focus.copy(alpha = 0.10f)
@@ -228,7 +228,7 @@ private fun MenuTileView(tile: MenuTile, modifier: Modifier = Modifier) {
                 tile.hint,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 fontSize = 11.sp,
-                maxLines = 1,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
             )
         }

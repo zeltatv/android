@@ -578,7 +578,8 @@ private fun PaletteSwatch(
             color = if (background.isBrightColor()) Color(0xFF111111) else Color.White,
             fontSize = 10.sp,
             fontWeight = FontWeight.SemiBold,
-            maxLines = 1,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis,
         )
     }
 }
