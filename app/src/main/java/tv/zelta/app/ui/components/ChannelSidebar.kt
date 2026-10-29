@@ -77,7 +77,6 @@ fun ChannelSidebar(
     var view by remember { mutableStateOf(SidebarView.DEFAULT) }
     val listState = rememberLazyListState()
     val ungroupedLabel = zt("Grupsuz", "Ungrouped")
-    val enhanced = false
 
     val rows = remember(
         viewModel.channels,
@@ -268,10 +267,10 @@ fun ChannelSidebar(
                         when (row) {
                             is SidebarRow.Header -> Text(
                                 row.label,
-                                color = if (enhanced) MaterialTheme.colorScheme.primary.copy(alpha = 0.7f) else MaterialTheme.colorScheme.onSurfaceVariant,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Medium,
-                                letterSpacing = if (enhanced) 1.8.sp else 0.8.sp,
+                                letterSpacing = 0.8.sp,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(28.dp)
@@ -282,11 +281,8 @@ fun ChannelSidebar(
                                 val channel = row.channel
                                 ChannelRow(
                                     channel = channel,
-                                    number = viewModel.channels.indexOfFirst { it.id == channel.id } + 1,
-                                    showNumber = enhanced,
                                     selected = viewModel.selected?.id == channel.id,
                                     favorite = viewModel.isFavorite(channel),
-                                    enhanced = enhanced,
                                     onSelect = { onChannelSelected(channel) },
                                     onToggleFavorite = { viewModel.toggleFavorite(channel) },
                                     modifier = if (row.key == firstEntryKey) {
@@ -406,11 +402,8 @@ private fun QuickFilter(
 @Composable
 private fun ChannelRow(
     channel: Channel,
-    number: Int,
-    showNumber: Boolean,
     selected: Boolean,
     favorite: Boolean,
-    enhanced: Boolean,
     onSelect: () -> Unit,
     onToggleFavorite: () -> Unit,
     modifier: Modifier = Modifier,
@@ -420,7 +413,7 @@ private fun ChannelRow(
     Row(
         modifier
             .fillMaxWidth()
-            .height(if (enhanced) 48.dp else 40.dp)
+            .height(40.dp)
             .clip(shape)
             .background(
                 when {
@@ -430,12 +423,8 @@ private fun ChannelRow(
                 }
             )
             .border(
-                if (focused) 2.dp else if (selected && enhanced) 1.dp else 0.dp,
-                when {
-                    focused -> zeltaColors.focus
-                    selected && enhanced -> MaterialTheme.colorScheme.primary.copy(alpha = 0.4f)
-                    else -> Color.Transparent
-                },
+                if (focused) 2.dp else 0.dp,
+                if (focused) zeltaColors.focus else Color.Transparent,
                 shape,
             )
             .onFocusChanged { focused = it.isFocused }
@@ -443,16 +432,7 @@ private fun ChannelRow(
             .padding(horizontal = 6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (showNumber) {
-            Text(
-                number.toString(),
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.SemiBold,
-                modifier = Modifier.width(22.dp),
-            )
-        }
-        ChannelLogo(channel, Modifier.size(if (enhanced) 28.dp else 24.dp))
+        ChannelLogo(channel, Modifier.size(24.dp))
         Spacer(Modifier.width(8.dp))
         Text(
             channel.name,
@@ -463,15 +443,6 @@ private fun ChannelRow(
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.weight(1f),
         )
-        if (enhanced && selected) {
-            Box(
-                Modifier
-                    .size(6.dp)
-                    .clip(RoundedCornerShape(50))
-                    .background(MaterialTheme.colorScheme.primary),
-            )
-            Spacer(Modifier.width(6.dp))
-        }
         Box(
             Modifier
                 .size(26.dp)

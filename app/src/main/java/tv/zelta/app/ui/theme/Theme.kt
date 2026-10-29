@@ -19,7 +19,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.roundToInt
 
-/** Amber focus colour of the classic ZeltaTV skin. */
+/** Amber accent used by the default ZeltaTV tokens. */
 val ZeltaAmber = Color(0xFFF6C445)
 val ZeltaTurquoise = Color(0xFF2EE6F6)
 
@@ -105,14 +105,12 @@ private val ZeltaTypography = Typography(
 @Composable
 fun ZeltaTheme(
     themeId: String = "default",
-    skin: String = "zeltatv",
     content: @Composable () -> Unit,
 ) {
     val preset = ZELTA_PALETTES.firstOrNull { it.id == themeId } ?: ZELTA_PALETTES.first()
     val tokens = buildTokens(preset.background)
-    val enhanced = skin == "enhanced"
-    val primary = if (enhanced) (preset.accent ?: ZeltaTurquoise) else tokens.primary
-    val focus = if (enhanced) primary else ZeltaAmber
+    val primary = preset.accent ?: ZeltaTurquoise
+    val focus = primary
     val onPrimary = if (primary.isBrightColor()) Color(0xFF141414) else Color(0xFFFFFFFF)
     val foreground = tokens.foreground
 

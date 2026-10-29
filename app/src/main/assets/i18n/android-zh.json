@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "本应用依据 GNU General Public License v3.0（GPL-3.0-only）分发。源代码可在 GitHub 仓库获取。",
 	"OK play · BACK close": "OK 播放 · BACK 关闭",
 	"Now playing": "正在播放",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "视频轨道",
 	"Automatic": "自动",
 	"Source default stream": "来源默认流",
@@ -112,6 +111,6 @@
 	"New category": "新分类",
 	"Create": "创建",
 	"Add a link or a file to get started.": "添加链接或文件以开始使用。",
-	"Classic": "经典",
-	"{count} channels": "{count} 个频道"
+	"{count} channels": "{count} 个频道",
+	"Colour palettes": "调色板"
 }

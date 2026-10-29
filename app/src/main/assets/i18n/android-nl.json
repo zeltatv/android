@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "Deze app valt onder de GNU General Public License v3.0 (GPL-3.0-only). De broncode staat in de GitHub-repository.",
 	"OK play · BACK close": "OK afspelen · BACK sluiten",
 	"Now playing": "Nu bezig",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "VIDEOSPRAK",
 	"Automatic": "Automatisch",
 	"Source default stream": "Standaardstream van de bron",
@@ -112,6 +111,6 @@
 	"New category": "Nieuwe categorie",
 	"Create": "Aanmaken",
 	"Add a link or a file to get started.": "Voeg een link of bestand toe om te beginnen.",
-	"Classic": "Klassiek",
-	"{count} channels": "{count} kanalen"
+	"{count} channels": "{count} kanalen",
+	"Colour palettes": "Kleurenpaletten"
 }

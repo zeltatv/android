@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "यह ऐप GNU General Public License v3.0 (GPL-3.0-only) के अंतर्गत वितरित है। स्रोत कोड GitHub रिपॉज़िटरी में उपलब्ध है।",
 	"OK play · BACK close": "OK चलाएँ · BACK बंद करें",
 	"Now playing": "अभी चल रहा है",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "वीडियो ट्रैक",
 	"Automatic": "स्वचालित",
 	"Source default stream": "स्रोत की डिफ़ॉल्ट स्ट्रीम",
@@ -112,6 +111,6 @@
 	"New category": "नई श्रेणी",
 	"Create": "बनाएँ",
 	"Add a link or a file to get started.": "शुरू करने के लिए लिंक या फ़ाइल जोड़ें।",
-	"Classic": "क्लासिक",
-	"{count} channels": "{count} चैनल"
+	"{count} channels": "{count} चैनल",
+	"Colour palettes": "रंग पैलेट"
 }

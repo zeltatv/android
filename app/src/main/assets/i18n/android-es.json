@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "Esta aplicación se distribuye bajo GNU General Public License v3.0 (GPL-3.0-only). El código fuente está en el repositorio de GitHub.",
 	"OK play · BACK close": "OK reproducir · BACK cerrar",
 	"Now playing": "En reproducción",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "PISTA DE VÍDEO",
 	"Automatic": "Automático",
 	"Source default stream": "Emisión predeterminada de la fuente",
@@ -112,6 +111,6 @@
 	"New category": "Nueva categoría",
 	"Create": "Crear",
 	"Add a link or a file to get started.": "Añade un enlace o un archivo para empezar.",
-	"Classic": "Clásico",
-	"{count} channels": "{count} canales"
+	"{count} channels": "{count} canales",
+	"Colour palettes": "Paletas de color"
 }

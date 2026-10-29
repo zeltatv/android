@@ -23,7 +23,7 @@ debug-signed and intended for sideloading.
 |---|---|
 | <img src="docs/images/screenshots/02-player.png" alt="Portrait playback: 16:9 player above the channel list" width="300"> | <img src="docs/images/screenshots/08-channels-landscape.png" alt="Landscape channel list" width="100%"> |
 | <img src="docs/images/screenshots/01-sources.png" alt="Sources dialog on the Library tab" width="300"> | <img src="docs/images/screenshots/03-channels.png" alt="Channel list with search, favourites and history" width="300"> |
-| <img src="docs/images/screenshots/04-menu.png" alt="Main menu tiles" width="300"> | <img src="docs/images/screenshots/05-settings.png" alt="Appearance settings with Classic and Enhanced" width="300"> |
+| <img src="docs/images/screenshots/04-menu.png" alt="Main menu tiles" width="300"> | <img src="docs/images/screenshots/05-settings.png" alt="Theme settings with seven colour palettes" width="300"> |
 
 <p align="center">
   <img src="docs/images/screenshots/07-menu-landscape.png" alt="Main menu in landscape" width="100%">
@@ -32,7 +32,7 @@ debug-signed and intended for sideloading.
 ## Features
 
 - Desktop-identical shell: top bar, channel rail, full-bleed player, channel menu and settings
-- 18 languages; **Classic** and **Enhanced** skins with seven palettes
+- 18 languages and seven colour palettes
 - Sources by link, file or library, with categories and a tile library on first run
 - Search, favourites, history, numeric zap and quality selection
 - Android TV D-pad layout, phone portrait and landscape, 44 dp touch targets

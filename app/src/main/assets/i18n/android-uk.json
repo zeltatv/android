@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "Застосунок поширюється за GNU General Public License v3.0 (GPL-3.0-only). Вихідний код доступний у репозиторії GitHub.",
 	"OK play · BACK close": "OK відтворити · BACK закрити",
 	"Now playing": "Зараз відтворюється",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "ВІДЕОДОРІЖКА",
 	"Automatic": "Автоматично",
 	"Source default stream": "Потік джерела за замовчуванням",
@@ -112,6 +111,6 @@
 	"New category": "Нова категорія",
 	"Create": "Створити",
 	"Add a link or a file to get started.": "Додайте посилання або файл, щоб почати.",
-	"Classic": "Класичний",
-	"{count} channels": "{count} каналів"
+	"{count} channels": "{count} каналів",
+	"Colour palettes": "Кольорові палітри"
 }

@@ -52,7 +52,6 @@ import tv.zelta.app.ui.theme.zeltaColors
 @Composable
 fun MainMenuDialog(
     channelCount: Int,
-    enhanced: Boolean = false,
     onDismiss: () -> Unit,
     onSources: () -> Unit,
     onChannels: () -> Unit,
@@ -101,19 +100,6 @@ fun MainMenuDialog(
                                 fontWeight = FontWeight.SemiBold,
                                 letterSpacing = (-0.2).sp,
                             )
-                            if (enhanced) {
-                                Spacer(Modifier.size(6.dp))
-                                Text(
-                                    "ENHANCED",
-                                    color = MaterialTheme.colorScheme.primary,
-                                    fontSize = 9.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    letterSpacing = 1.6.sp,
-                                    modifier = Modifier
-                                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f))
-                                        .padding(horizontal = 5.dp, vertical = 2.dp),
-                                )
-                            }
                         }
                         Spacer(Modifier.weight(1f))
                         Column(horizontalAlignment = Alignment.End) {
@@ -134,7 +120,7 @@ fun MainMenuDialog(
                             MenuTile("channels", Ri.ListCheck, zt("Kanal listesi", "Channel list"), channelCountText(channelCount), onChannels),
                             MenuTile("settings", Ri.Settings, zt("Ayarlar", "Settings"), zt("Oynatma, tema, dil", "Playback, theme, language"), onSettings),
                             MenuTile("shortcuts", Ri.Keyboard, zt("Kısayollar", "Shortcuts"), zt("Kumanda ve klavye tuşları", "Remote and keyboard keys"), onShortcuts),
-                            MenuTile("skin", Ri.Palette, zt("Görünüm", "Appearance"), zt("ZeltaTV / Enhanced", "ZeltaTV / Enhanced"), onAppearance),
+                            MenuTile("theme", Ri.Palette, zt("Tema", "Theme"), zt("Renk paletleri", "Colour palettes"), onAppearance),
                             MenuTile("close", Ri.CloseCircle, zt("Kapat", "Close"), zt("Oynatıcıya dön", "Back to the player"), onClose),
                         )
                         val columns = if (narrow) 2 else 3

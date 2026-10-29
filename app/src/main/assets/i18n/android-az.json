@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "Bu tətbiq GNU General Public License v3.0 (GPL-3.0-only) ilə yayımlanır. Mənbə kodu GitHub repozitoriyasındadır.",
 	"OK play · BACK close": "OK oxut · BACK bağla",
 	"Now playing": "İndi oxunur",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "VİDEO YOLU",
 	"Automatic": "Avtomatik",
 	"Source default stream": "Mənbənin standart yayımı",
@@ -112,6 +111,6 @@
 	"New category": "Yeni kateqoriya",
 	"Create": "Yarat",
 	"Add a link or a file to get started.": "Başlamaq üçün link və ya fayl əlavə edin.",
-	"Classic": "Klassik",
-	"{count} channels": "{count} kanal"
+	"{count} channels": "{count} kanal",
+	"Colour palettes": "Rəng palitraları"
 }

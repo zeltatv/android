@@ -9,8 +9,6 @@ import androidx.compose.runtime.setValue
 class AppSettings(context: Context) {
     private val prefs = context.applicationContext.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
 
-    var skin by mutableStateOf(prefs.getString(KEY_SKIN, "zeltatv") ?: "zeltatv")
-        private set
     var theme by mutableStateOf(prefs.getString(KEY_THEME, "default") ?: "default")
         private set
     var language by mutableStateOf(prefs.getString(KEY_LANGUAGE, "en") ?: "en")
@@ -26,17 +24,11 @@ class AppSettings(context: Context) {
     }
 
     fun resetAll() {
-        skin = "zeltatv"
         theme = "default"
         language = "en"
         highestQuality = true
         setupDone = false
         prefs.edit().clear().apply()
-    }
-
-    fun updateSkin(value: String) {
-        skin = value
-        prefs.edit().putString(KEY_SKIN, value).apply()
     }
 
     fun updateTheme(value: String) {
@@ -56,7 +48,6 @@ class AppSettings(context: Context) {
 
     companion object {
         private const val PREFS = "zeltatv-settings"
-        private const val KEY_SKIN = "skin"
         private const val KEY_THEME = "theme"
         private const val KEY_LANGUAGE = "language"
         private const val KEY_QUALITY = "highest_quality"

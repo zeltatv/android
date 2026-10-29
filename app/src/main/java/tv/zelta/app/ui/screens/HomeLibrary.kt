@@ -58,7 +58,7 @@ import tv.zelta.app.ui.theme.RiIcon
 import tv.zelta.app.ui.theme.zeltaColors
 
 /**
- * Enhanced home screen, ported from the desktop `PlaylistHome`: the saved
+ * Saved playlists home screen, ported from the desktop `PlaylistHome`: the saved
  * playlists are large tiles a remote can walk through and the URL / file form
  * sits underneath them. Shown whenever no channel list is loaded yet.
  */

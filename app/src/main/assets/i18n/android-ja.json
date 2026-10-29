@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "このアプリは GNU General Public License v3.0（GPL-3.0-only）で配布されています。ソースコードは GitHub リポジトリにあります。",
 	"OK play · BACK close": "OK 再生 · BACK 閉じる",
 	"Now playing": "再生中",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "映像トラック",
 	"Automatic": "自動",
 	"Source default stream": "ソースの既定ストリーム",
@@ -112,6 +111,6 @@
 	"New category": "新しいカテゴリ",
 	"Create": "作成",
 	"Add a link or a file to get started.": "開始するにはリンクまたはファイルを追加してください。",
-	"Classic": "クラシック",
-	"{count} channels": "{count} チャンネル"
+	"{count} channels": "{count} チャンネル",
+	"Colour palettes": "カラーパレット"
 }

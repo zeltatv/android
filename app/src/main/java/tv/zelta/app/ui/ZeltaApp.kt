@@ -164,7 +164,6 @@ private fun HomeShell(
         Column(Modifier.fillMaxSize()) {
             if (!fullscreen && !(handset && playerVisible)) {
                 TopBar(
-                    enhanced = settings.skin == "enhanced",
                     hasPlaylist = viewModel.channels.isNotEmpty(),
                     sidebarVisible = sidebarVisible,
                     compact = compact,
@@ -282,7 +281,6 @@ private fun HomeShell(
         if (menuOpen) {
             MainMenuDialog(
                 channelCount = viewModel.channels.size,
-                enhanced = settings.skin == "enhanced",
                 onDismiss = { menuOpen = false },
                 onSources = {
                     menuOpen = false
@@ -347,7 +345,6 @@ private fun HomeShell(
 
 @Composable
 private fun TopBar(
-    enhanced: Boolean,
     hasPlaylist: Boolean,
     sidebarVisible: Boolean,
     compact: Boolean,
@@ -390,19 +387,6 @@ private fun TopBar(
             fontWeight = FontWeight.SemiBold,
             letterSpacing = (-0.2).sp,
         )
-        if (enhanced) {
-            Spacer(Modifier.width(6.dp))
-            Text(
-                "ENHANCED",
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = 8.sp,
-                fontWeight = FontWeight.SemiBold,
-                letterSpacing = 1.8.sp,
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f))
-                    .padding(horizontal = 5.dp, vertical = 2.dp),
-            )
-        }
         Spacer(Modifier.weight(1f))
         ZeltaRiButton(Ri.Info, onShortcuts, zt("Klavye ve kumanda kısayolları", "Keyboard and remote shortcuts"), tint = muted)
         if (hasPlaylist) {

@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
         val settings = AppSettings(this)
         setContent {
-            ZeltaTheme(themeId = settings.theme, skin = settings.skin) {
+            ZeltaTheme(themeId = settings.theme) {
                 ZeltaApp(settings = settings)
             }
         }

@@ -59,7 +59,6 @@
 	"This app is distributed under the GNU General Public License v3.0 (GPL-3.0-only). Source code is available in the GitHub repository.": "이 앱은 GNU General Public License v3.0(GPL-3.0-only)에 따라 배포됩니다. 소스 코드는 GitHub 저장소에 있습니다.",
 	"OK play · BACK close": "OK 재생 · BACK 닫기",
 	"Now playing": "재생 중",
-	"ZeltaTV / Enhanced": "ZeltaTV / Enhanced",
 	"VIDEO TRACK": "비디오 트랙",
 	"Automatic": "자동",
 	"Source default stream": "소스 기본 스트림",
@@ -112,6 +111,6 @@
 	"New category": "새 카테고리",
 	"Create": "만들기",
 	"Add a link or a file to get started.": "시작하려면 링크나 파일을 추가하세요.",
-	"Classic": "클래식",
-	"{count} channels": "{count}개 채널"
+	"{count} channels": "{count}개 채널",
+	"Colour palettes": "색상 팔레트"
 }

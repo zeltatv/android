@@ -61,8 +61,6 @@ import tv.zelta.app.ui.components.zt
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
 import tv.zelta.app.ui.theme.ZELTA_PALETTES
-import tv.zelta.app.ui.theme.ZeltaAmber
-import tv.zelta.app.ui.theme.ZeltaTurquoise
 import tv.zelta.app.ui.theme.isBrightColor
 import tv.zelta.app.ui.theme.zeltaColors
 
@@ -79,10 +77,9 @@ fun SettingsScreen(
     val context = LocalContext.current
     val activity = context as? Activity
     val configuration = LocalConfiguration.current
-    // The Enhanced settings rail is a wide-screen (tablet/TV) pattern; on a phone
-    // it would squeeze the content panel, so phones keep the tab strip in both
-    // orientations.
-    val enhancedRail = settings.skin == "enhanced" && configuration.smallestScreenWidthDp >= 600
+    // The settings rail is a wide-screen (tablet/TV) pattern; on a phone it would
+    // squeeze the content panel, so phones keep the tab strip in both orientations.
+    val wideRail = configuration.smallestScreenWidthDp >= 600
     var tab by rememberSaveable { mutableStateOf("playback") }
     var confirmReset by remember { mutableStateOf(false) }
     val firstFocus = remember { FocusRequester() }
@@ -160,8 +157,8 @@ fun SettingsScreen(
             }
         }
 
-        if (enhancedRail) {
-            // Enhanced skin: vertical remote rail, matching the desktop settings page.
+        if (wideRail) {
+            // Wide screens keep the vertical remote rail of the desktop settings page.
             Row(Modifier.fillMaxWidth().weight(1f)) {
                 Column(
                     Modifier
@@ -351,25 +348,8 @@ private fun LanguageTab(settings: AppSettings, activity: Activity?) {
 @Composable
 private fun ThemeTab(settings: AppSettings) {
     Card {
-        SectionLabel(zt("GÖRÜNÜM", "APPEARANCE"))
+        SectionLabel(zt("TEMA", "THEME"))
         Spacer(Modifier.height(10.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            ZeltaChip(
-                label = "Classic",
-                selected = settings.skin == "zeltatv",
-                onClick = { settings.updateSkin("zeltatv") },
-                accent = ZeltaAmber,
-            )
-            ZeltaChip(
-                label = "Enhanced",
-                selected = settings.skin == "enhanced",
-                onClick = { settings.updateSkin("enhanced") },
-                accent = ZeltaTurquoise,
-            )
-        }
-        Spacer(Modifier.height(16.dp))
-        SectionLabel(zt("TEMA PALETİ", "THEME PALETTE"))
-        Spacer(Modifier.height(8.dp))
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             ZELTA_PALETTES.chunked(4).forEach { row ->
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
