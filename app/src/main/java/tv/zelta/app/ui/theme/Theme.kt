@@ -55,9 +55,6 @@ val ZELTA_PALETTES = listOf(
     ZeltaPalette("warm", Color(0xFF1E1A14), Color(0xFFF6C445)),
 )
 
-@Suppress("unused")
-val ZELTA_THEMES = ZELTA_PALETTES.map { it.id to it }
-
 /** Colours that do not map onto a Material slot. */
 data class ZeltaTokens(
     val focus: Color,
@@ -180,7 +177,6 @@ val zeltaColors: ZeltaTokens
     @Composable get() = LocalZeltaTokens.current
 
 private data class Derived(
-    val primary: Color,
     val foreground: Color,
     val mutedForeground: Color,
     val card: Color,
@@ -199,7 +195,6 @@ private fun buildTokens(background: Color): Derived {
     fun hsl(hue: Int, sat: Int, light: Int) = Color.hsl(hue.toFloat(), (sat / 100f).coerceIn(0f, 1f), (light / 100f).coerceIn(0f, 1f))
     return if (dark) {
         Derived(
-            primary = hsl(h, (s * 0.5).roundToInt(), 92),
             foreground = hsl(h, sc, 98),
             mutedForeground = hsl(h, sc, 71),
             card = hsl(h, sc, clamp(l + 5)),
@@ -212,7 +207,6 @@ private fun buildTokens(background: Color): Derived {
         )
     } else {
         Derived(
-            primary = hsl(h, (s * 0.5).roundToInt(), 20),
             foreground = hsl(h, sc, 5),
             mutedForeground = hsl(h, sc, 40),
             card = hsl(h, sc, clamp(l - 3)),

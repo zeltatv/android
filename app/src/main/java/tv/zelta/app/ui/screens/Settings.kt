@@ -61,6 +61,7 @@ import tv.zelta.app.ui.components.zt
 import tv.zelta.app.ui.theme.Ri
 import tv.zelta.app.ui.theme.RiIcon
 import tv.zelta.app.ui.theme.ZELTA_PALETTES
+import tv.zelta.app.ui.theme.ZeltaTurquoise
 import tv.zelta.app.ui.theme.isBrightColor
 import tv.zelta.app.ui.theme.zeltaColors
 
@@ -365,7 +366,7 @@ private fun ThemeTab(settings: AppSettings) {
                                 else -> zt("Sıcak", "Warm")
                             },
                             background = palette.background,
-                            accent = palette.accent ?: Color.White,
+                            accent = palette.accent ?: ZeltaTurquoise,
                             selected = settings.theme == palette.id,
                             onClick = { settings.updateTheme(palette.id) },
                             modifier = Modifier.weight(1f),
