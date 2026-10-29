@@ -178,12 +178,16 @@ stuck on the `/no-cors` path; that is the proof of the architectural decision.
 The desktop theme works with CSS variables + `localStorage` (`src/lib/theme/store.svelte.ts`). The
 Android equivalent:
 
-- Colours are moved into Compose `ColorScheme` (the default palette uses a `#141414` background,
-  `#F6C445` focus and `#2EE6F6` accent).
-- The `THEME_PRESETS` list is written to `DataStore`; theme changes apply to `MaterialTheme`
-  immediately.
-- In M1 a Kotlin port of the `generateThemeVars` algorithm (oklch → sRGB) is required; for now a
-  fixed palette is used.
+- Colours are moved into Compose `ColorScheme` (the default palette uses a `#141414` background
+  and a `#2EE6F6` accent, both `primary` and `focus`).
+- `ZELTA_PALETTES` holds the seven presets (default, mono, light, navy, forest, plum, warm). The
+  selected id is saved in `SharedPreferences` under the `theme` key; changing it re-applies
+  `MaterialTheme` immediately.
+- A preset's accent becomes both `ColorScheme.primary` and the focus colour; presets without an
+  accent (light) fall back to `ZeltaTurquoise`. Cards, borders and muted surfaces are derived from
+  the background with the desktop HSL rules.
+- Classic/Enhanced skins no longer exist; there is one layout and the palette is the only visual
+  setting.
 - Electron-specific calls such as `setTitleBarOverlay` are ignored on Android.
 
 ## 9. Data and persistence
