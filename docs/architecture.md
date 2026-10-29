@@ -178,8 +178,8 @@ stuck on the `/no-cors` path; that is the proof of the architectural decision.
 The desktop theme works with CSS variables + `localStorage` (`src/lib/theme/store.svelte.ts`). The
 Android equivalent:
 
-- Colours are moved into Compose `ColorScheme` (currently: `#141414` background, `#F6C445` classic
-  focus, `#2EE6F6` Enhanced accent).
+- Colours are moved into Compose `ColorScheme` (the default palette uses a `#141414` background,
+  `#F6C445` focus and `#2EE6F6` accent).
 - The `THEME_PRESETS` list is written to `DataStore`; theme changes apply to `MaterialTheme`
   immediately.
 - In M1 a Kotlin port of the `generateThemeVars` algorithm (oklch → sRGB) is required; for now a

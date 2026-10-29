@@ -22,7 +22,7 @@
 
 ## M2 - Product parity (done)
 
-- [x] Desktop theme palette and two skins (classic / Enhanced)
+- [x] Desktop theme palettes with seven colour options
 - [x] Channel number OSD, channel banner, quality selection
 - [x] Immersive playback surface and TV focus handling
 - [x] Two-pane phone/tablet layout
