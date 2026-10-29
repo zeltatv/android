@@ -202,6 +202,15 @@ fun PlayerPane(
                         zap(-1)
                         true
                     }
+                    // Physical TV remotes send CHANNEL_UP/DOWN for CH+ / CH-.
+                    event.key == Key.ChannelUp -> {
+                        zap(1)
+                        true
+                    }
+                    event.key == Key.ChannelDown -> {
+                        zap(-1)
+                        true
+                    }
                     event.key == Key.Menu -> {
                         onOpenMenu()
                         true
