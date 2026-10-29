@@ -16,21 +16,6 @@ Original project: [zeltatv/zeltatv](https://github.com/zeltatv/zeltatv)
 Download `zeltatv.apk`. The APK is debug-signed and intended for sideloading. A signed Play Store
 AAB requires a private key and a store account, so it is still the next step.
 
-## Screenshots
-
-<p align="center">
-  <img src="docs/images/screenshots/02-player.png" alt="ZeltaTV Android playing a channel in portrait with the channel list underneath" width="42%">
-  &nbsp;
-  <img src="docs/images/screenshots/04-menu.png" alt="ZeltaTV Android main menu" width="42%">
-</p>
-
-| | |
-|---|---|
-| ![Tile library](docs/images/screenshots/01-library.png) | ![Channel list](docs/images/screenshots/03-channels.png) |
-| The tile library on first run: saved playlists as large tiles, add-source form underneath. | Channel list with search, favourites and recently watched. |
-| ![Theme settings](docs/images/screenshots/05-settings.png) | ![Player](docs/images/screenshots/02-player.png) |
-| Appearance: Classic (amber) or Enhanced (theme accent) plus seven palettes. | Portrait playback: 16:9 player above the channel list, touch transport controls. |
-
 ## 1.0.0 update (2026-10-27)
 
 - **Turn the phone and the app follows**: orientation follows the device sensor (even with the system

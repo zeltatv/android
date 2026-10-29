@@ -185,13 +185,6 @@ fun SetupScreen(
                                     }
                                 },
                                 onStart = { step = 2 },
-                                onDemo = {
-                                    val demo = viewModel.sources.firstOrNull { it.type == SourceType.DEMO }
-                                        ?: viewModel.sources.firstOrNull()
-                                    if (demo != null) viewModel.loadSource(demo)
-                                    settings.completeSetup()
-                                    onDone()
-                                },
                             )
                             2 -> SourceStep(
                                 viewModel = viewModel,
@@ -474,7 +467,6 @@ private fun WelcomeStep(
     settings: AppSettings,
     onLanguage: (String) -> Unit,
     onStart: () -> Unit,
-    onDemo: () -> Unit,
 ) {
     val startFocus = remember { FocusRequester() }
 
@@ -513,7 +505,6 @@ private fun WelcomeStep(
                     .focusRequester(startFocus)
                     .autoFocus(startFocus),
             )
-            ZeltaButton(ztSetup("Demo listesiyle dene", "Try the demo list"), onDemo)
         }
     }
 }

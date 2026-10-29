@@ -27,7 +27,6 @@ import tv.zelta.app.data.PlaylistCategory
 import tv.zelta.app.data.PlaylistSource
 import tv.zelta.app.data.PlaylistStore
 import tv.zelta.app.data.SourceType
-import tv.zelta.app.data.demoSource
 import tv.zelta.app.settings.AppSettings
 import tv.zelta.app.settings.I18n
 import tv.zelta.core.playlist.Channel
@@ -151,11 +150,11 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         })
 
         viewModelScope.launch {
-            var saved = store.sources()
-            if (saved.isEmpty()) {
-                saved = listOf(demoSource())
-                store.saveSources(saved)
-            }
+            val stored = store.sources()
+            // The built-in demo playlist is gone; drop any leftover copy so the
+            // library only ever holds the viewer's own sources.
+            val saved = stored.filterNot { it.type == SourceType.DEMO }
+            if (saved.size != stored.size) store.saveSources(saved)
             sources = saved
             categories = store.categories()
             favorites = store.favorites()

@@ -355,7 +355,7 @@ private fun ThemeTab(settings: AppSettings) {
         Spacer(Modifier.height(10.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             ZeltaChip(
-                label = zt("Klasik", "Classic"),
+                label = "Classic",
                 selected = settings.skin == "zeltatv",
                 onClick = { settings.updateSkin("zeltatv") },
                 accent = ZeltaAmber,
