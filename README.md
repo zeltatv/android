@@ -11,9 +11,8 @@ Original project: [zeltatv/zeltatv](https://github.com/zeltatv/zeltatv)
 
 ## Download
 
-- [ZeltaTV Android 1.0.0 (APK)](https://github.com/zeltatv/android/releases/tag/v1.0.0)
-
-Download `zeltatv.apk`. The APK is debug-signed and intended for sideloading. A signed Play Store
+[**Download ZeltaTV APK**](https://github.com/zeltatv/android/releases/latest) - the latest `zeltatv.apk`
+is on the releases page. The APK is debug-signed and intended for sideloading; a signed Play Store
 AAB requires a private key and a store account, so it is still the next step.
 
 ## Photo Gallery
