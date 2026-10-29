@@ -16,11 +16,37 @@ Original project: [zeltatv/zeltatv](https://github.com/zeltatv/zeltatv)
 Download `zeltatv.apk`. The APK is debug-signed and intended for sideloading. A signed Play Store
 AAB requires a private key and a store account, so it is still the next step.
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/images/screenshots/06-player-landscape.png" alt="ZeltaTV Android playing a channel in landscape with touch controls" width="100%">
+</p>
+
+| Portrait | Landscape |
+|---|---|
+| <img src="docs/images/screenshots/02-player.png" alt="Portrait playback: 16:9 player above the channel list" width="300"> | <img src="docs/images/screenshots/08-channels-landscape.png" alt="Landscape channel list" width="100%"> |
+| Phones play in portrait: the player sits in a 16:9 band above the channel list, with 44 dp touch controls. | Turn the phone sideways and the same screen reflows to the full width — the player fills the screen. |
+
+| | |
+|---|---|
+| <img src="docs/images/screenshots/01-sources.png" alt="Sources dialog on the Library tab" width="300"> | <img src="docs/images/screenshots/03-channels.png" alt="Channel list with search, favourites and history" width="300"> |
+| Sources: link, file and library tabs, categories and per-source actions. | Channel list with search, favourites and recently watched. |
+| <img src="docs/images/screenshots/04-menu.png" alt="Main menu tiles" width="300"> | <img src="docs/images/screenshots/05-settings.png" alt="Appearance settings with Classic and Enhanced" width="300"> |
+| Main menu: sources, channels, settings, shortcuts and appearance. | Appearance: **Classic** (amber) or **Enhanced** (theme accent) plus seven palettes. |
+
+<p align="center">
+  <img src="docs/images/screenshots/07-menu-landscape.png" alt="Main menu in landscape" width="100%">
+</p>
+
 ## 1.0.0 update (2026-10-27)
 
-- **Turn the phone and the app follows**: orientation follows the device sensor (even with the system
-  rotation lock on), dialogs re-measure after a rotation instead of hanging off the edge, and the
-  settings tab stays selected
+- **No demo playlist**: the wizard no longer offers "Try the demo list" and no demo source is seeded;
+  the app starts on your own library (a leftover demo source is removed on start)
+- **Portrait and landscape**: the same screens reflow — the player fills the screen sideways, the
+  channel list and main menu switch to three columns — and the app rotates even with the system
+  rotation lock on
+- **Turn the phone and the app follows**: orientation follows the device sensor, dialogs re-measure
+  after a rotation instead of hanging off the edge, and the settings tab stays selected
 - **Classic** is the new name of the plain skin and keeps the amber accent; **Enhanced** stays turquoise
 - The Enhanced settings rail is limited to tablet/TV widths, so phones get the tab strip and a
   full-width content panel
