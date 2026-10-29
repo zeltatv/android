@@ -16,7 +16,7 @@ debug-signed and intended for sideloading.
 ## Photo Gallery
 
 <p align="center">
-  <img src="docs/images/screenshots/06-player-landscape.png" alt="ZeltaTV Android playing a channel full-bleed in landscape" width="100%">
+  <img src="docs/images/screenshots/06-player-landscape.png" alt="ZeltaTV Android playing a channel in landscape with the transport controls" width="100%">
 </p>
 
 | | |
